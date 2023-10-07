@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+}
+.tab {
+  height: 100vh;
+  background-color: aqua;
+  font-size: 100px;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab:nth-child(even) {
+  background-color: blueviolet;
+}
+#toTop {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-image: url(img/totop.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: yellow;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 0 #c9c90a;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#toTop:active {
+  transform: translateY(10px);
+  box-shadow: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+nav {
+  position: fixed;
+  width: 70px;
+  margin-top: 150px;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.4);
+}
+nav li {
+  height: 60px;
+  position: relative;
+}
+nav li a {
+  color: white;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  padding-left: 25%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  transition: all 0.3s linear;
+}
+nav li:nth-child(1) a {
+  background: #4267b2;
+}
+nav li:nth-child(2) a {
+  background: #010101;
+}
+nav li:nth-child(3) a {
+  background: #ff0000;
+}
+nav li:nth-child(4) a {
+  background: #015ce0;
+}
+nav li a i {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  font-size: 27px;
+}
+nav li a span {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: none;
+}
+a:hover {
+  z-index: 1;
+  width: 200px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+ul li a:hover span {
+  display: block;
+  padding-left: 30%;
+}
