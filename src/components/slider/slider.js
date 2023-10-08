@@ -64,10 +64,10 @@ export const Slider = () => {
           </div>
         </div>
         <div className="buttons">
-          <span id="prev" className="material-symbols-outlined">
+          <span id="prev" class="material-symbols-outlined">
             arrow_back_ios
           </span>
-          <span id="next" className="material-symbols-outlined">
+          <span id="next" class="material-symbols-outlined">
             arrow_forward_ios
           </span>
         </div>
