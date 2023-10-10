@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
+import classnames from 'classnames';
 import './slider.scss';
 
 export const Slider = () => {
   const [docTitle, setDocTitle] = useState('slider');
+  const [activeIndex, setActiveIndex] = useState(0);
+
   useEffect(() => {
     var slider = document.querySelector('.slider .list');
     var items = document.getElementsByClassName('item');
@@ -27,9 +30,6 @@ export const Slider = () => {
     }, 3000);
     function reloadSlider() {
       slider.style.left = -items[active].offsetLeft + 'px';
-      var last_active_dot = document.querySelector('.slider .dots li.active');
-      last_active_dot.classList.remove('active');
-      dots[active].classList.add('active');
       clearInterval(refreshInterval);
       refreshInterval = setInterval(() => {
         next.click();
@@ -37,11 +37,18 @@ export const Slider = () => {
     }
     dots.forEach((li, key) => {
       li.addEventListener('click', () => {
+        setActiveIndex(key);
         active = key;
         reloadSlider();
       });
     });
   }, []);
+
+  const data = [
+    { text: '1', image: 'img/1.png' },
+    { text: '2', image: 'img/2.png' },
+    { text: '3', image: 'img/3.png' },
+  ];
 
   return (
     <>
@@ -52,29 +59,28 @@ export const Slider = () => {
       </Helmet>
       <div className="slider">
         <div className="list">
-          <div className="item">
-            <img src="img/1.png" alt="" />
-            <h1 className="text" />
-          </div>
-          <div className="item">
-            <img src="img/2.png" alt="" />
-          </div>
-          <div className="item">
-            <img src="img/3.png" alt="" />
-          </div>
+          {data.map((el, key) => (
+            <div className="item" key={key}>
+              <img src={el.image} alt="" />
+              {el.text ? <h1 className={el.text} /> : ''}
+            </div>
+          ))}
         </div>
         <div className="buttons">
-          <span id="prev" class="material-symbols-outlined">
+          <span id="prev" className="material-symbols-outlined">
             arrow_back_ios
           </span>
-          <span id="next" class="material-symbols-outlined">
+          <span id="next" className="material-symbols-outlined">
             arrow_forward_ios
           </span>
         </div>
         <ul className="dots">
-          <li className="active" />
-          <li />
-          <li />
+          {data.map((el, key) => (
+            <li
+              className={classnames(activeIndex === key && 'active')}
+              key={key}
+            />
+          ))}
         </ul>
       </div>
     </>
